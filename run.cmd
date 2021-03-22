@@ -1,0 +1,1 @@
+deno run --unstable --watch --allow-net --allow-read --allow-run server/main.ts

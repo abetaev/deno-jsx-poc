@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "ES2017"
+    ],
+    "jsx": "react",
+    "jsxFactory": "h"
+  }
+}
