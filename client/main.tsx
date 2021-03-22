@@ -1,4 +1,5 @@
-import {h,render} from 'https://esm.sh/preact';
+import React from 'https://esm.sh/react';
+import {render} from 'https://esm.sh/react-dom';
 import Chat from './chat.tsx'
 
 const url = new URL(document.URL)

@@ -1,5 +1,4 @@
-import {h} from 'https://esm.sh/preact'
-import {Reducer, useReducer} from 'https://esm.sh/preact/hooks'
+import React, {useReducer, Reducer} from 'https://esm.sh/react'
 
 import {RelayMessage} from '../proto/base.ts'
 
@@ -34,7 +33,8 @@ type ChatState = {
 type ChatProps = {socket: WebSocket}
 const Chat = ({socket}: ChatProps) => {
 
-  const [chat, handleRelayMessage] = useReducer<ChatState, RelayMessage>(({peers, messages}, message) => {
+  const [chat, handleRelayMessage] = useReducer<Reducer<ChatState, RelayMessage>, ChatState>(({peers, messages}, message) => {
+      console.log(message)
     switch (message.type) {
       case "join":
         peers.push({id: message.id})
@@ -47,7 +47,7 @@ const Chat = ({socket}: ChatProps) => {
         break;
     }
     return {peers, messages}
-  }, {peers: [], messages: []})
+  }, {peers: [], messages: []}, (chat) => chat)
 
   socket.onmessage = (message) => handleRelayMessage(JSON.parse(message.data))
 
